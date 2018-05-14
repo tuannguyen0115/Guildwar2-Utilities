@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<div clas='container'>
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <ul class="navbar-nav">
+      <a class="navbar-brand" [routerLink]="['']">Guild Wars 2</a>
+      <li class="nav-item">
+          <a class="nav-link" [routerLink]="['']">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['tpcal']">TP Profit Calculation</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['istancal']">Istan Shipment Calculation</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['richnode']">Rich Nodes Gathering</a>
+      </li>      
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+  </nav>
+  <router-outlet></router-outlet>
+</div>

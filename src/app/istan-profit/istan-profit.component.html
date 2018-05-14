@@ -1,0 +1,59 @@
+  
+<br>
+<div class="container col-md-7 offset-md-3">
+  <div class='container'>
+    <b>Item Cost:</b>
+    250
+    <span>
+      <img [src]="volatileImage" width="2%">
+    </span>&nbsp; + &nbsp; 1
+    <span>
+      <img [src]="goldCoinImage">
+    </span>
+    <br>
+    The Shipments will be adjusted by the the drop rate of contents, and market rate of each items.
+    The table will display the estimate sell price ( Higher Buy Offter and Lowest Sell Offer), as well as Profit after Fees( 15% List+Sell Price, 1 gold cost).
+  </div>
+  <br>
+  <div class='container text-center'>
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Type</th>
+          <th scope="col">Highest Buy Offer (Instant Sell All)</th>
+          <th scope="col">After Fees</th>         
+          <th scope="col">Lowest Sell Offer</th>
+          <th scope="col">After Fees</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let shipment of shipments" >        
+          <tr>
+            <td>{{ shipment.name }}</td>    
+            <td>
+                <span *ngIf="shipment.buy_price > 10000">{{ (shipment.buy_price - (shipment.buy_price % 10000)) / 10000 }} <img [src]='goldCoinImage'></span>
+                <span *ngIf="shipment.buy_price > 100">{{ ((shipment.buy_price - (shipment.buy_price % 100)) / 100) % 100 }} <img [src]='silverCoinImage'></span>
+                <span *ngIf="shipment.buy_price > 0">{{ shipment.buy_price % 100 }} <img [src]='copperCoinImage'></span>
+            </td>
+            <td [ngClass]="{'text-success': shipment.buy_after_fee > 0, 'text-danger': shipment.buy_after_fee < 0}">
+              <span *ngIf="shipment.buy_after_fee > 10000 || shipment.buy_after_fee > 10000  < -10000 ">{{ (shipment.buy_after_fee - (shipment.buy_after_fee % 10000)) / 10000 }} <img [src]='goldCoinImage'></span>
+              <span *ngIf="shipment.buy_after_fee > 100 || shipment.buy_after_fee < 100">{{ ((shipment.buy_after_fee - (shipment.buy_after_fee % 100)) / 100) % 100 }} <img [src]='silverCoinImage'></span>
+              <span *ngIf="shipment.buy_after_fee">{{ shipment.buy_after_fee % 100 }} <img [src]='copperCoinImage'></span>
+            </td>
+            <td>
+              <span *ngIf="shipment.sell_price > 10000">{{ (shipment.sell_price - (shipment.sell_price % 10000)) / 10000 }} <img [src]='goldCoinImage'></span>
+              <span *ngIf="shipment.sell_price > 100">{{ ((shipment.sell_price - (shipment.sell_price % 100)) / 100) % 100 }} <img [src]='silverCoinImage'></span>
+              <span *ngIf="shipment.sell_price > 0">{{ shipment.sell_price % 100 }} <img [src]='copperCoinImage'></span>
+          </td>
+          <td [ngClass]="{'text-success': shipment.sell_after_fee > 0, 'text-danger': shipment.sell_after_fee < 0}">
+            <span *ngIf="shipment.sell_after_fee > 10000 || shipment.sell_after_fee > 10000  < -10000 ">{{ (shipment.sell_after_fee - (shipment.sell_after_fee % 10000)) / 10000 }} <img [src]='goldCoinImage'></span>
+            <span *ngIf="shipment.sell_after_fee > 100 || shipment.sell_after_fee < 100">{{ ((shipment.sell_after_fee - (shipment.sell_after_fee % 100)) / 100) % 100 }} <img [src]='silverCoinImage'></span>
+            <span *ngIf="shipment.sell_after_fee">{{ shipment.sell_after_fee % 100 }} <img [src]='copperCoinImage'></span>
+          </td>
+          </tr>
+
+      </tbody>
+    </table>
+
+  </div>
+
+</div>
